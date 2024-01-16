@@ -1,5 +1,6 @@
 package com.dylan.projet.ApiDemo.entities;
 
+import com.dylan.projet.ApiDemo.entities.parent.ParentEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

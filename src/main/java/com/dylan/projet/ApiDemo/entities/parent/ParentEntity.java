@@ -1,4 +1,4 @@
-package com.dylan.projet.ApiDemo.entities;
+package com.dylan.projet.ApiDemo.entities.parent;
 
 import jakarta.persistence.*;
 import lombok.Data;

@@ -1,20 +1,20 @@
 package com.dylan.projet.ApiDemo.models;
 
 import com.dylan.projet.ApiDemo.entities.UserEntity;
+import com.dylan.projet.ApiDemo.models.parent.ParentModel;
+import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
-
-@Getter
-@Setter
+@EqualsAndHashCode(callSuper = true)
+@Data
+@MappedSuperclass
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class User {
-
-
-    private Integer id;
+@SuperBuilder
+public class User extends ParentModel {
 
     @NotNull
     @NotEmpty

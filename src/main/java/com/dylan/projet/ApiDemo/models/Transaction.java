@@ -2,19 +2,20 @@ package com.dylan.projet.ApiDemo.models;
 
 import com.dylan.projet.ApiDemo.entities.TransactionEntity;
 import com.dylan.projet.ApiDemo.enums.TransactionType;
+import com.dylan.projet.ApiDemo.models.parent.ParentModel;
+import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.math.BigDecimal;
-
-@Getter
-@Setter
+@EqualsAndHashCode(callSuper = true)
+@Data
+@MappedSuperclass
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class Transaction {
-
-    private Integer id;
+@SuperBuilder
+public class Transaction extends ParentModel {
 
     @Positive
     @Max(1000000)

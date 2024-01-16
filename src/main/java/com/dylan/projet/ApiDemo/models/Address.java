@@ -1,19 +1,20 @@
 package com.dylan.projet.ApiDemo.models;
 
 import com.dylan.projet.ApiDemo.entities.AddressEntity;
+import com.dylan.projet.ApiDemo.models.parent.ParentModel;
+import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-
-@Getter
-@Setter
+import lombok.experimental.SuperBuilder;
+@EqualsAndHashCode(callSuper = true)
+@Data
+@MappedSuperclass
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class Address {
-
-    private Integer id;
+@SuperBuilder
+public class Address extends ParentModel {
 
     @NotNull
     @NotEmpty

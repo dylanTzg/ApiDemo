@@ -1,4 +1,4 @@
-package com.dylan.projet.ApiDemo.services.interfaces;
+package com.dylan.projet.ApiDemo.services.interfaces.parent;
 
 import java.util.List;
 

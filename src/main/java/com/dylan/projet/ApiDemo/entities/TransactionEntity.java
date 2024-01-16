@@ -1,5 +1,6 @@
 package com.dylan.projet.ApiDemo.entities;
 
+import com.dylan.projet.ApiDemo.entities.parent.ParentEntity;
 import com.dylan.projet.ApiDemo.enums.TransactionType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

@@ -1,19 +1,21 @@
 package com.dylan.projet.ApiDemo.models;
 
 import com.dylan.projet.ApiDemo.entities.AccountEntity;
+import com.dylan.projet.ApiDemo.models.parent.ParentModel;
+import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
-@Getter
-@Setter
+@EqualsAndHashCode(callSuper = true)
+@Data
+@MappedSuperclass
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class Account {
-
-    private Integer id;
+@SuperBuilder
+public class Account extends ParentModel {
 
     @NotNull
     @NotEmpty

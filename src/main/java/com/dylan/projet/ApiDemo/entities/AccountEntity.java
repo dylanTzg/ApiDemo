@@ -1,5 +1,6 @@
 package com.dylan.projet.ApiDemo.entities;
 
+import com.dylan.projet.ApiDemo.entities.parent.ParentEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
