@@ -1,8 +1,10 @@
 package com.dylan.projet.ApiDemo.services.impls;
 
 import com.dylan.projet.ApiDemo.entities.UserEntity;
+import com.dylan.projet.ApiDemo.models.Account;
 import com.dylan.projet.ApiDemo.models.User;
 import com.dylan.projet.ApiDemo.repositories.UserRepository;
+import com.dylan.projet.ApiDemo.services.interfaces.AccountService;
 import com.dylan.projet.ApiDemo.services.interfaces.UserService;
 import com.dylan.projet.ApiDemo.utils.ObjectValidator;
 import jakarta.persistence.EntityNotFoundException;
@@ -17,6 +19,8 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository repository;
+
+    private final AccountService accountService;
 
     private final ObjectValidator<User> validator;
 
@@ -46,5 +50,25 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteById(Integer id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public Integer validateAccount(Integer id) {
+        UserEntity userEntity = repository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("User not found"));
+        userEntity.setActive(true);
+        Account account = Account.builder()
+                .user(User.fromEntity(userEntity))
+                .build();
+        accountService.save(account);
+        return null;
+    }
+
+    @Override
+    public Integer invalidateAccount(Integer id) {
+        UserEntity userEntity = repository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("User not found"));
+        userEntity.setActive(false);
+        return repository.save(userEntity).getId();
     }
 }

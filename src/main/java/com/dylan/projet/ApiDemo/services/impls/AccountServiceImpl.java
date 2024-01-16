@@ -1,6 +1,7 @@
 package com.dylan.projet.ApiDemo.services.impls;
 
 import com.dylan.projet.ApiDemo.entities.AccountEntity;
+import com.dylan.projet.ApiDemo.exceptions.OperationNotPermittedException;
 import com.dylan.projet.ApiDemo.models.Account;
 import com.dylan.projet.ApiDemo.repositories.AccountRepository;
 import com.dylan.projet.ApiDemo.services.interfaces.AccountService;
@@ -25,6 +26,15 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Integer save(Account model) {
         validator.validate(model);
+        boolean userHasAlreadyAnAccount = repository.findByUserId(model.getUser().getId()).isPresent();
+        if (userHasAlreadyAnAccount) {
+            throw new OperationNotPermittedException(
+                    "User has already an active account",
+                    "create account",
+                    "accountService",
+                    ""
+                    );
+        }
         if (model.getId() == null)
         {
             model.setIban(generateIban());

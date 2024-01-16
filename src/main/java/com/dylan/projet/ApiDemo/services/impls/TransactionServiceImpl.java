@@ -61,4 +61,12 @@ public class TransactionServiceImpl implements TransactionService {
         }
         return 0;
     }
+
+    @Override
+    public List<Transaction> findAllByUserId(Integer userId) {
+      return repository.findAllByUserId(userId)
+        .stream()
+        .map(Transaction::fromEntity)
+        .collect(java.util.stream.Collectors.toList());
+    }
 }

@@ -1,7 +1,6 @@
 package com.dylan.projet.ApiDemo.services.impls;
 
 import com.dylan.projet.ApiDemo.models.Address;
-import com.dylan.projet.ApiDemo.models.User;
 import com.dylan.projet.ApiDemo.repositories.AddressRepository;
 import com.dylan.projet.ApiDemo.services.interfaces.AddressService;
 import com.dylan.projet.ApiDemo.utils.ObjectValidator;
