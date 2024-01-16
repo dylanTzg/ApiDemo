@@ -32,7 +32,8 @@ public class UserEntity extends ParentEntity {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
+    @Column(nullable = false,
+    columnDefinition = "boolean default false")
     private Boolean active;
 
     @OneToMany(mappedBy = "user")

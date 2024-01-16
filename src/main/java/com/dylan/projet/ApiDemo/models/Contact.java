@@ -13,7 +13,7 @@ import lombok.*;
 @Builder
 public class Contact {
 
-    @NotNull
+
     private Integer id;
 
     @NotNull
@@ -44,7 +44,6 @@ public class Contact {
 
     public static ContactEntity toEntity(Contact contact) {
         return ContactEntity.builder()
-                .id(contact.getId())
                 .lastName(contact.getLastName())
                 .firstName(contact.getFirstName())
                 .iban(contact.getIban())

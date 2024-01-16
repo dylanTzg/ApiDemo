@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Builder
 public class User {
 
-    @NotNull
+
     private Integer id;
 
     @NotNull
@@ -42,7 +42,6 @@ public class User {
     @Size(min = 8)
     private String password;
 
-    @NotNull
     private Boolean active;
 
 
@@ -60,7 +59,6 @@ public class User {
 
    public static UserEntity toEntity(User user) {
             return UserEntity.builder()
-                    .id(user.getId())
                     .lastName(user.getLastName())
                     .firstName(user.getFirstName())
                     .birthDate(user.getBirthDate())
@@ -69,5 +67,4 @@ public class User {
                     .active(user.getActive())
                     .build();
         }
-
 }

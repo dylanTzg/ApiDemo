@@ -12,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class Account {
-    @NotNull
+
     private Integer id;
 
     @NotNull
@@ -33,7 +33,6 @@ public class Account {
 
     public static AccountEntity toEntity(Account account) {
         return com.dylan.projet.ApiDemo.entities.AccountEntity.builder()
-                .id(account.getId())
                 .iban(account.getIban())
                 .user(User.toEntity(account.getUser()))
                 .build();

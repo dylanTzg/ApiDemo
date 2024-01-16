@@ -12,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class Address {
-    @NotNull
+
     private Integer id;
 
     @NotNull
@@ -52,7 +52,6 @@ public class Address {
 
     public static AddressEntity toEntity(Address address) {
         return com.dylan.projet.ApiDemo.entities.AddressEntity.builder()
-                .id(address.getId())
                 .street(address.getStreet())
                 .houseNumber(address.getHouseNumber())
                 .zipCode(address.getZipCode())

@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Builder
 public class Transaction {
-    @NotNull
+
     private Integer id;
 
     @Positive
@@ -42,7 +42,6 @@ public class Transaction {
 
     public static TransactionEntity toEntity(Transaction transaction) {
         return TransactionEntity.builder()
-                .id(transaction.getId())
                 .amount(transaction.getAmount())
                 .type(transaction.getType())
                 .destinationIban(transaction.getDestinationIban())

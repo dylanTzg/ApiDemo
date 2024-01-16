@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface ParentService <T>{
 
-    Integer save(T object);
+    Integer save(T model);
 
     List<T> findAll();
 

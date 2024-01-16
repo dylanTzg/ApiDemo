@@ -12,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class Role {
-    @NotNull
+
     private Integer id;
 
     @NotNull
@@ -33,7 +33,6 @@ public class Role {
 
     public static RoleEntity toEntity(Role role) {
         return RoleEntity.builder()
-                .id(role.getId())
                 .name(role.getName())
                 .user(User.toEntity(role.getUser()))
                 .build();
