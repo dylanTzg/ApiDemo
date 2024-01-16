@@ -14,7 +14,8 @@ import java.math.BigDecimal;
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Transaction extends AbstractEntity {
+@Table(name = "transaction")
+public class TransactionEntity extends ParentEntity {
 
 
     private BigDecimal amount;
@@ -26,5 +27,5 @@ public class Transaction extends AbstractEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private UserEntity user;
 }

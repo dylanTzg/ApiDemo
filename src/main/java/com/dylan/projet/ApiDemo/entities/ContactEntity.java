@@ -1,6 +1,9 @@
 package com.dylan.projet.ApiDemo.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,24 +14,19 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Contact extends AbstractEntity {
+@Table(name = "contact")
+public class ContactEntity extends ParentEntity {
 
-    @Id
-    @GeneratedValue
-    private Integer id;
 
     private String lastName;
 
     private String firstName;
 
-    private String email;
-
-    private String password;
-
     private String iban;
+
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private UserEntity user;
 
 }

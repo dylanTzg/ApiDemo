@@ -1,17 +1,15 @@
 package com.dylan.projet.ApiDemo.repositories;
 
-import com.dylan.projet.ApiDemo.entities.User;
+import com.dylan.projet.ApiDemo.entities.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
+import java.time.LocalDate;
 
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 
-    List<User> findAllByFirstName(String firstName);
+    UserEntity findByFirstNameIgnoreCaseAndLastNameIgnoreCaseAndBirthDate(String firstName, String lastName, LocalDate birthDate);
 
-    User findByLastNameAndFirstNameAndEmail(String lastName, String firstName, String email);
-
-    User findByAccount_Iban(String iban);
+    UserEntity findByEmail(String email);
 
 
 }
