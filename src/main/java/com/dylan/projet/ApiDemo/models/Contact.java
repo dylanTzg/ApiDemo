@@ -39,6 +39,8 @@ public class Contact extends ParentModel {
                 .firstName(entity.getFirstName())
                 .iban(entity.getIban())
                 .user(User.fromEntity(entity.getUser()))
+                .creationDate(entity.getCreationDate())
+                .lastUpdate(entity.getLastUpdate())
                 .build();
     }
 

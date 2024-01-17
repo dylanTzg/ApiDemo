@@ -1,9 +1,11 @@
 package com.dylan.projet.ApiDemo.exceptions;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class OperationNotPermittedException extends RuntimeException{
+@Getter
+public class OperationNotPermittedException extends RuntimeException {
 
     private final String errorMessage;
 

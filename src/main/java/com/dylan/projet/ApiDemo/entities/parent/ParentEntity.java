@@ -9,6 +9,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -26,8 +27,9 @@ public class ParentEntity {
             updatable = false,
             nullable = false
     )
-    private LocalDate creationDate;
+    private LocalDateTime creationDate;
 
     @LastModifiedDate
-    private LocalDate lastUpdate;
+    private LocalDateTime lastUpdate;
+
 }

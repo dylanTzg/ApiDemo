@@ -6,8 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -17,7 +20,6 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "_user")
 public class UserEntity extends ParentEntity {
-
 
     private String lastName;
 
@@ -34,7 +36,7 @@ public class UserEntity extends ParentEntity {
     private String password;
 
     @Column(nullable = false,
-    columnDefinition = "boolean default false")
+            columnDefinition = "boolean default false")
     private Boolean active;
 
     @OneToMany(mappedBy = "user")

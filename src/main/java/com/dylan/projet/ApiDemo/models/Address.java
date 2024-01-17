@@ -1,6 +1,7 @@
 package com.dylan.projet.ApiDemo.models;
 
 import com.dylan.projet.ApiDemo.entities.AddressEntity;
+import com.dylan.projet.ApiDemo.entities.UserEntity;
 import com.dylan.projet.ApiDemo.models.parent.ParentModel;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.NotBlank;
@@ -37,7 +38,7 @@ public class Address extends ParentModel {
     @NotBlank
     private String country;
 
-    private User user;
+    private Integer userId;
 
     public static Address fromEntity(AddressEntity entity) {
         return Address.builder()
@@ -47,7 +48,9 @@ public class Address extends ParentModel {
                 .zipCode(entity.getZipCode())
                 .city(entity.getCity())
                 .country(entity.getCountry())
-                .user(User.fromEntity(entity.getUser()))
+                .userId(entity.getUser().getId())
+                .creationDate(entity.getCreationDate())
+                .lastUpdate(entity.getLastUpdate())
                 .build();
     }
 
@@ -58,7 +61,7 @@ public class Address extends ParentModel {
                 .zipCode(address.getZipCode())
                 .city(address.getCity())
                 .country(address.getCountry())
-                .user(User.toEntity(address.getUser()))
+                .user(UserEntity.builder().id(address.getUserId()).build())
                 .build();
     }
 

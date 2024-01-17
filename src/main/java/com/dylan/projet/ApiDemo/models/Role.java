@@ -29,6 +29,8 @@ public class Role extends ParentModel {
                 .id(entity.getId())
                 .name(entity.getName())
                 .user(User.fromEntity(entity.getUser()))
+                .creationDate(entity.getCreationDate())
+                .lastUpdate(entity.getLastUpdate())
                 .build();
     }
 

@@ -19,7 +19,7 @@ public class TransactionServiceImpl implements TransactionService {
 
     private final TransactionRepository repository;
 
-    private final ObjectValidator objectValidator;
+    private final ObjectValidator<Transaction> objectValidator;
 
     @Override
     public Integer save(Transaction model) {
