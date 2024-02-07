@@ -6,6 +6,8 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -42,7 +44,23 @@ public class GlobalExceptionHandler {
         ExceptionResponsePattern response = ExceptionResponsePattern.builder()
                 .message("email already exists")
                 .build();
-        return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(response);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+    }
+
+    @ExceptionHandler(DisabledException.class)
+    public ResponseEntity<ExceptionResponsePattern> handleDisabledException(DisabledException e) {
+        ExceptionResponsePattern response = ExceptionResponsePattern.builder()
+                .message("Account is not active")
+                .build();
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(response);
+    }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<ExceptionResponsePattern> handleBadCredentialsException(BadCredentialsException e) {
+        ExceptionResponsePattern response = ExceptionResponsePattern.builder()
+                .message("Invalid credentials")
+                .build();
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(response);
     }
 
 }
